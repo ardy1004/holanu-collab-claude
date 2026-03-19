@@ -8,6 +8,7 @@ import {
   Plus, Search, Grid3X3, List, Download, FileUp,
   Edit, Trash2, Eye, MessageSquare,
   MoreVertical, CheckCircle, Clock, AlertCircle, Loader2,
+  Map, Filter, BarChart2, TrendingUp,
 } from 'lucide-react';
 import { getListings, listingToProperty, createListing } from '@/lib/api';
 
@@ -547,3 +548,5 @@ function PropertiPageWrapper() {
     </Suspense>
   );
 }
+
+export default PropertiPageWrapper;
