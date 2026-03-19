@@ -17,6 +17,12 @@ export interface Listing {
   province:       string | null;
   city:           string | null;
   district:       string | null;
+    min_bedrooms?:    number;
+    min_land_area?:   number;
+    min_build_area?:  number;
+    has_salary_slip?: boolean;
+    no_active_kpr?:   boolean;
+    need_kpr_help?:   boolean;
   address:        string | null;
   property_type:  string;
   offer_type:     string;

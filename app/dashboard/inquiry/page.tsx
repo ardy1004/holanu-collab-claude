@@ -61,11 +61,11 @@ export default function InquiryPage() {
         const token = await getToken();
         if (!token) { setLoading(false); setApiError(true); return; }
 
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/inquiries?limit=50`,
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
-        const d = await res.json();
+         const res = await fetch(
+           `${process.env.NEXT_PUBLIC_API_URL}/api/inquiries?limit=50`,
+           { headers: { Authorization: `Bearer ${token}` } }
+         );
+         const d = await res.json() as { ok: boolean; data: { inquiries: any[]; total: number } };
         if (d.ok && d.data?.inquiries?.length > 0) {
           setAllInquiries(d.data.inquiries.map((i: any) => ({
             ...i,

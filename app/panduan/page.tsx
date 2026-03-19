@@ -1,6 +1,9 @@
+'use client';
+
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import Link from 'next/link';
+import { useState } from 'react';
 import { articles } from '@/lib/data';
 import { Clock, ArrowRight } from 'lucide-react';
 

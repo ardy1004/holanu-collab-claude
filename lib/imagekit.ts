@@ -63,7 +63,9 @@ export async function uploadToImageKit(
     throw new Error(`ImageKit upload gagal: ${err}`);
   }
 
-  const result = await uploadRes.json();
+  const result = await uploadRes.json() as {
+    url: string; fileId: string; name: string; width?: number; height?: number; size?: number;
+  };
   onProgress?.(100);
 
   // 4. Return URL dengan transformasi WebP + ukuran optimal
