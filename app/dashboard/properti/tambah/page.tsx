@@ -145,6 +145,13 @@ export default function TambahListingPage() {
     const files = Array.from(e.target.files ?? []);
     if (!files.length) return;
 
+    // Dapatkan token sebelum upload
+    const uploadToken = await getToken();
+    if (!uploadToken) {
+      setUploadError('Sesi login tidak valid. Silakan refresh halaman dan coba lagi.');
+      return;
+    }
+
     // Max 20 foto
     const remaining = 20 - photos.length;
     const toUpload  = files.slice(0, remaining);
@@ -164,7 +171,7 @@ export default function TambahListingPage() {
       }]);
 
       try {
-        const result = await uploadToImageKit(file, 'listings');
+        const result = await uploadToImageKit(file, 'listings', undefined, uploadToken);
         // Replace placeholder dengan hasil upload
         setPhotos(prev => prev.map(p =>
           p.name === tempId

@@ -142,7 +142,7 @@ const tierLabel: Record<number, string> = {
   3: '🔵 Tier 3 — Terverifikasi Identitas Penuh',
 };
 
-export default function AgenProfilePage({ params }: { params: { username: string } }) {
+export default async function AgenProfilePage({ params }: { params: { username: string } }) {
   const agent = AGENTS.find(a => a.id === params.username);
 
   // Fallback jika username tidak ditemukan
@@ -169,9 +169,9 @@ export default function AgenProfilePage({ params }: { params: { username: string
   // Fetch listing dari API, fallback ke static
   let displayListings: any[] = [];
   try {
-    const res = await import('@/lib/api').then(m => m.getListings({ q: agent.name, limit: 6 }));
+    const { getListings, listingToProperty } = await import('@/lib/api');
+    const res = await getListings({ q: agent.name, limit: 6 });
     if (res.listings.length > 0) {
-      const { listingToProperty } = await import('@/lib/api');
       displayListings = res.listings.map(listingToProperty);
     }
   } catch {}

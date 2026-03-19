@@ -24,13 +24,15 @@ export async function uploadToImageKit(
   file: File,
   folder = 'listings',
   onProgress?: (pct: number) => void,
+  token?: string,
 ): Promise<UploadResult> {
 
-  // 1. Minta auth signature dari Workers API
+  // 1. Minta auth signature dari Workers API (butuh Clerk JWT token)
   const authRes = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL ?? 'https://holanu-api.holanu-api.workers.dev'}/api/upload`
+    `${process.env.NEXT_PUBLIC_API_URL || 'https://holanu-api.holanu-api.workers.dev'}/api/upload`,
+    token ? { headers: { Authorization: `Bearer ${token}` } } : undefined
   );
-  if (!authRes.ok) throw new Error('Gagal mendapatkan upload signature');
+  if (!authRes.ok) throw new Error(`Gagal mendapatkan upload signature (${authRes.status})`);
   const { data: auth } = await authRes.json() as { data: { token: string; expire: number; signature: string; publicKey: string } };
 
   // 2. Build FormData untuk ImageKit upload API

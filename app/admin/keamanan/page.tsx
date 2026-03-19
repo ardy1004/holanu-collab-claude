@@ -32,9 +32,6 @@ const actionColors: Record<string, string> = {
   'EDIT HARGA':      'bg-blue-50    text-blue-700   border-blue-200',
   'TIER UPGRADE':    'bg-purple-50  text-purple-700 border-purple-200',
 };
-  'EDIT HARGA':     'bg-blue-50    text-blue-700   border-blue-200',
-  'TIER UPGRADE':   'bg-purple-50  text-purple-700 border-purple-200',
-};
 
 export default function AdminKeamananPage() {
   const [flagRules, setFlagRules] = useState(INIT_FLAG_RULES);

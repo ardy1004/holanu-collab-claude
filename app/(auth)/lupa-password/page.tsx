@@ -1,4 +1,4 @@
-import { ForgotPassword } from '@clerk/nextjs';
+import { SignIn } from '@clerk/nextjs';
 
 export default function LupaPasswordPage() {
   return (
@@ -10,23 +10,28 @@ export default function LupaPasswordPage() {
           Lupa Password?
         </h1>
         <p className="text-slate-500 text-sm font-sans">
-          Masukkan email kamu — kami kirimkan link reset password
+          Masukkan email kamu di form di bawah, lalu klik{' '}
+          <span className="font-semibold text-[#1D4ED8]">"Forgot Password?"</span>{' '}
+          untuk reset password
         </p>
       </div>
 
-      {/* Clerk ForgotPassword form */}
-      <ForgotPassword
+      {/* Clerk SignIn — includes built-in Forgot Password flow */}
+      <SignIn
         routing="hash"
         appearance={{
           elements: {
-            rootBox:               'w-full',
-            card:                  'shadow-sm border border-[#BFDBFE] rounded-2xl w-full',
-            headerTitle:           'hidden',
-            headerSubtitle:        'hidden',
-            formButtonPrimary:     'bg-[#1D4ED8] hover:bg-[#1E40AF] font-sans font-semibold',
-            footerActionLink:      'text-[#1D4ED8] hover:underline font-semibold',
-            formFieldInput:        'border-[#BFDBFE] focus:border-[#1D4ED8] font-sans text-sm rounded-xl',
-            formFieldLabel:        'text-[#1E3A8A] font-semibold text-xs font-sans',
+            rootBox:                  'w-full',
+            card:                     'shadow-sm border border-[#BFDBFE] rounded-2xl w-full',
+            headerTitle:              'hidden',
+            headerSubtitle:           'hidden',
+            socialButtonsBlockButton: 'hidden',
+            socialButtonsProviderIcon:'hidden',
+            dividerRow:               'hidden',
+            formButtonPrimary:        'bg-[#1D4ED8] hover:bg-[#1E40AF] font-sans font-semibold',
+            footerActionLink:         'text-[#1D4ED8] hover:underline font-semibold',
+            formFieldInput:           'border-[#BFDBFE] focus:border-[#1D4ED8] font-sans text-sm rounded-xl',
+            formFieldLabel:           'text-[#1E3A8A] font-semibold text-xs font-sans',
           },
         }}
       />

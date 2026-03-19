@@ -3,7 +3,7 @@
  * Semua fetch ke Cloudflare Workers terpusat di sini
  */
 
-const BASE = process.env.NEXT_PUBLIC_API_URL ?? 'https://holanu-api.holanu-api.workers.dev';
+const BASE = process.env.NEXT_PUBLIC_API_URL || 'https://holanu-api.holanu-api.workers.dev';
 
 // ── Types ──────────────────────────────────────────────
 export interface Listing {
