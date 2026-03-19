@@ -49,9 +49,9 @@ export default function AnalitikPage() {
     getListings({ limit: 10 })
       .then(res => {
         if (res.listings.length > 0) setListings(res.listings.map(listingToProperty));
-        else setListings(topListings.map(l => ({ ...l, id: l.code, title: l.title, views: l.views, inquiry_count: l.inquiries })));
+        else setListings(topListings.map(l => ({ ...l, id: l.code, title: l.title, views: l.views, inquiry_count: l.inquiry })));
       })
-      .catch(() => setListings(topListings.map(l => ({ ...l, id: l.code, title: l.title, views: l.views, inquiry_count: l.inquiries }))))
+      .catch(() => setListings(topListings.map(l => ({ ...l, id: l.code, title: l.title, views: l.views, inquiry_count: l.inquiry }))))
       .finally(() => setLoading(false));
   }, []);
 
